@@ -1,0 +1,12 @@
+venv/
+.git/
+.ipynb_checkpoints/
+data/raw/
+data/*.csv
+data/*.duckdb
+*.duckdb
+*.ipynb
+logs/
+target/
+dbt_packages/
+.DS_Store

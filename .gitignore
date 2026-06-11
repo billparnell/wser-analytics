@@ -1,0 +1,9 @@
+
+target/
+dbt_packages/
+logs/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
