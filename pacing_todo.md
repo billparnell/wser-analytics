@@ -10,10 +10,11 @@ Status key: `[ ]` not started · `[~]` partly done · `[!]` blocked / needs a de
 
 ## Phase 0 — finish the dbt work that's already started
 
-Reality check: `models/` contains only dbt's scaffold examples
-(`my_first_dbt_model.sql`, `my_second_dbt_model.sql`). No staging model exists.
-The dashboard is fed by `scripts/prep_dashboard_data.py` (pandas → CSVs in
-`data/processed/`), which bypasses dbt entirely.
+Reality check as of 2026-08-15: `models/` contained only dbt's scaffold
+examples, and the dashboard was fed by `scripts/prep_dashboard_data.py`
+(pandas → CSVs) bypassing dbt entirely. As of 2026-08-16 the staging and mart
+layers exist and `dbt build` runs 54 checks green; the dashboard still reads
+the CSVs rather than the dbt models, which is the remaining seam.
 
 ### 0.0 Unblock dbt before writing any SQL — **DONE 2026-08-15**
 - [x] **Warehouse decided: DuckDB, Snowflake dropped.** The real failure was
@@ -64,14 +65,29 @@ The dashboard is fed by `scripts/prep_dashboard_data.py` (pandas → CSVs in
 - [x] `stg_wser_runners.sql` — 2,928 starters, 2017–2025, with DNFs
 - [x] `stg_wser_splits.sql` — 52,131 rows, one per runner-station
 - [x] `stg_wser_aid_stations.sql` — 24 stations in course order
-- [ ] Mart: finisher trends by year
-- [ ] Mart: age-group breakdowns
-- [ ] Mart: multi-finish runners — note names are not a safe key
-      (Arbogast/Canfield); needs a real identity-resolution decision
-- [ ] Mart: sub-24 rates
+- [x] `fct_finisher_trends` — one row per race year; starters, finishers,
+      finish rate, gender split, sub-24 rate, fastest/median/slowest
+- [x] `fct_age_group_performance` — race year x age group x gender. Bands are
+      our own decades, NOT WSER award divisions; 14 finishers with no recorded
+      age go to 'Unknown' so bands still sum to the year total.
+- [x] `fct_sub_24_rates` — race year x gender. Counts people, not places (see
+      the 1983/1984 note below).
+- [x] `dim_runner_careers` — one row per runner; multi-finishers are
+      `finish_count > 1`. **Identity is name-only, by decision on 2026-08-16.**
+      Wrong in both directions: Arbogast/Canfield splits one runner into two
+      careers (1 + 12 finishes), the two Paul Schmidts of 2000 merge two people
+      into one. `has_identity_conflict` flags careers whose implied birth year
+      moves >2 years or that finished twice in one June — 46 of 6,958 careers,
+      all multi-finishers, so ~2.5% of multi-finish careers are suspect.
+      Exclude flagged rows from any "most finishes" ranking.
+- [ ] Spot-check Bill Finkbeiner: the model gives him 17 finishes (1983–2011)
+      under a single name spelling. If his real total is higher, the scrape is
+      missing years or he appears under another spelling — worth an eyeball
+      from someone who knows the history.
 
 ### 0.2 Quality + ship
-- [x] dbt tests — 33 passing: unique/not_null on every staging grain,
+- [x] dbt tests — 54 passing across staging and marts: unique/not_null on
+      every grain, range checks on rates,
       `accepted_values` on gender and year, relationship tests splits →
       runners and splits → aid_stations
 - [x] Two singular tests carrying the reconciliation:
@@ -81,15 +97,20 @@ The dashboard is fed by `scripts/prep_dashboard_data.py` (pandas → CSVs in
       summary, with 1990 and 2005 pinned as known exceptions)
 - [x] Source + model + column descriptions in yml
 - [x] README section for the dbt layer
-- [ ] `dbt docs generate` and decide whether to publish the site
+- [x] `dbt docs generate` runs clean (catalog written)
+- [ ] Decide whether to publish the docs site anywhere
 - [ ] **Unresolved upstream:** two separately scraped wser.org pages disagree.
       1990 results list has 211 official finishers vs 208 in the summary (and
       the list itself is odd — place 21 missing, one place shared); 2005 has a
       clean gapless 1–318 sequence vs 317 in the summary. Both look like
       summary-side errors. Resolving means going back to wser.org.
-- [ ] Decide whether `is_sub_24` should count people or places. wser.org's
-      summary appears to count places, so 1983 and 1984 differ by one where a
-      tie straddles the 24-hour line. The model currently counts people.
+- [x] **`is_sub_24` counts people, not places** (decided 2026-08-16).
+      wser.org's summary appears to count places, so 1983 and 1984 each come
+      out one higher here where a tie straddles the 24-hour line. Counting
+      humans who broke 24 hours is the defensible reading; documented in
+      `fct_sub_24_rates` rather than tuned to match.
+- [ ] Point the Streamlit dashboard at the dbt models instead of reading
+      `data/processed/*.csv` directly — closes the last bypass
 - [ ] Push Phase 1 (results explorer) to GitHub with a clean README
 - [ ] Reconcile the phase numbering — the repo section calls the results explorer
       "Phase 1" and the phase list calls the baseline curve "Phase 1." Pick one

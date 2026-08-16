@@ -1,0 +1,88 @@
+version: 2
+
+models:
+  - name: fct_finisher_trends
+    description: >
+      One row per race year, 1974-2025. Finisher counts are computed from
+      stg_wser_results; starter counts come from wser.org's summary page and are
+      null where it has no row.
+    columns:
+      - name: race_year
+        data_tests: [unique, not_null]
+      - name: finishers
+        data_tests: [not_null]
+      - name: finish_rate
+        description: finishers / starters. Null where starters is unknown.
+        data_tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+                inclusive: true
+      - name: sub_24_rate
+        data_tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+                inclusive: true
+
+  - name: fct_sub_24_rates
+    description: >
+      Sub-24 finisher counts and rates per race year and gender. Counts people,
+      not places, so ties straddling the 24-hour line are counted in full.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [race_year, gender]
+    columns:
+      - name: gender
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['M', 'F', 'NB']
+      - name: sub_24_rate
+        data_tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+                inclusive: true
+
+  - name: fct_age_group_performance
+    description: >
+      Finisher counts and times per race year, age group and gender. Bands are
+      ten-year decades chosen here, NOT WSER's official award divisions.
+      Finishers with no recorded age fall in the 'Unknown' band.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [race_year, age_group, gender]
+    columns:
+      - name: age_group
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Under 30', '30-39', '40-49', '50-59', '60-69', '70+', 'Unknown']
+      - name: finishers
+        data_tests: [not_null]
+
+  - name: dim_runner_careers
+    description: >
+      One row per runner across the whole history; multi-finish runners are
+      `where finish_count > 1`. Identity is resolved on name alone -- a
+      deliberate simplification that both splits runners who change surname and
+      merges different people who share a name. `has_identity_conflict` flags
+      rows whose implied birth year moves by more than two years, which almost
+      always means the row mixes people.
+    columns:
+      - name: runner_key
+        description: Lowercased "first last". The identity key; see the model header.
+        data_tests: [unique, not_null]
+      - name: finish_count
+        data_tests: [not_null]
+      - name: has_identity_conflict
+        description: True where implied birth year spans more than two years.
+        data_tests: [not_null]

@@ -102,6 +102,10 @@ dbt deps && dbt build     # builds the staging layer and runs every test
 | `stg_wser_runners` | one starter per year, DNFs included | 2017–2025, 2,928 rows |
 | `stg_wser_splits` | one runner per aid station reached | 2017–2025, 52,131 rows |
 | `stg_wser_aid_stations` | one station | 24 rows |
+| `fct_finisher_trends` | one race year | 49 rows |
+| `fct_sub_24_rates` | race year × gender | |
+| `fct_age_group_performance` | race year × age group × gender | |
+| `dim_runner_careers` | one runner, whole history | 6,958 rows |
 
 `stg_wser_results` is the long history; `stg_wser_runners` is richer (bib,
 hometown, DNFs, seconds-precision times) but only covers the consistent
@@ -122,6 +126,24 @@ Quirks the staging layer handles, all of them real:
 - **Name changes.** Meghan Arbogast and Meghan Canfield are one runner. Never
   join the two sources on name.
 - **1975, 2008 and 2020 are absent** because no race was held.
+
+### Runner identity
+
+`dim_runner_careers` resolves a runner's identity **on name alone**. That is a
+deliberate simplification for this project, and it is wrong in both directions:
+a runner who changes surname splits into two careers (Meghan Arbogast and
+Meghan Canfield are one person, 1 finish and 12), and two people sharing a name
+merge into one (the two Paul Schmidts of 2000, aged 48 and 42).
+
+The model measures the damage instead of hiding it. `has_identity_conflict` is
+true where a career's implied birth year — race year minus age — moves by more
+than two years, or where a "runner" finished twice in one June, which is proof
+rather than suspicion. **46 of 6,958 careers are flagged, all of them
+multi-finishers**, so roughly 2.5% of multi-finish careers are suspect. Exclude
+flagged rows from any "most finishes" ranking.
+
+Sanity check on the unflagged data: Tim Twietmeyer shows 25 finishes, all 25
+under 24 hours, which is his actual record.
 
 ### Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
