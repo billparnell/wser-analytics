@@ -1,0 +1,16 @@
+# Project-local dbt profile. dbt checks the working directory before ~/.dbt,
+# so running dbt from the repo root picks this up automatically.
+#
+# DuckDB is the warehouse for this project: the dataset is ~11k rows, the whole
+# pipeline is local, and a file-based database keeps the repo clone-and-run with
+# no credentials to manage. Model SQL is kept ANSI-plain so the profile is the
+# only thing that would need to change if this ever moves to a real warehouse.
+
+wser_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: data/wser.duckdb
+      schema: main
+      threads: 4

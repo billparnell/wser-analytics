@@ -61,14 +61,34 @@ Things that can trip up step 3:
 
 ---
 
-Welcome to your new dbt project!
+## Warehouse and dbt
 
-### Using the starter project
+DuckDB, in a single file at `data/wser.duckdb`. The dataset is ~11k finisher
+rows and the whole pipeline is local, so a file-based database keeps the repo
+clone-and-run with no credentials to manage. `profiles.yml` lives in the repo
+root with a relative path — dbt reads the working directory before `~/.dbt`, so
+running dbt from the repo root picks it up automatically. Model SQL is kept
+ANSI-plain so the profile is the only thing that changes if this ever needs a
+real warehouse.
 
-Try running the following commands:
-- dbt run
-- dbt test
+**The database is derived data and is not committed.** Rebuild it:
 
+```bash
+source venv/bin/activate
+python scripts/prep_dashboard_data.py   # data/raw/*.xls* -> data/processed/*.csv
+python scripts/build_db.py              # CSVs -> data/wser.duckdb
+dbt debug                               # confirm the connection
+```
+
+Two upstream paths feed the database:
+
+| Table(s) | Source |
+|---|---|
+| `wser_results`, `wser_year_summary` | scraped from wser.org by `01_scrape_and_explore.ipynb`; its CSV output is committed, so rebuilds run offline |
+| `runners`, `splits`, `aid_stations`, `course_profile` | parsed from `data/raw/` by `prep_dashboard_data.py` |
+
+Only the scrape needs the network, and it only needs re-running when a new race
+year is published.
 
 ### Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
