@@ -182,9 +182,20 @@ def parse_splits():
     for year in YEARS:
         path = next(RAW.glob(f"wser{year}.xls*"))
         df = pd.read_excel(path, header=find_header_row(path))
+        if "Overall Place" not in df.columns:
+            raise ValueError(f"No 'Overall Place' column in {path}")
+
+        # The sheet is one ordered list of every starter: finishers ranked from
+        # 1, then DNFs continuing the same numbering. "Overall Place" is a row
+        # ordinal, not a finisher flag. Finishers are everyone placed at or
+        # above the last place carrying a time -- a few genuine finishers have a
+        # blank Time cell (2017 bibs 381 and 262), and keying off Time alone
+        # silently demotes them to DNFs.
+        place = pd.to_numeric(df["Overall Place"], errors="coerce")
+        last_finisher = place[df["Time"].map(parse_time_to_minutes).notna()].max()
 
         station_cols = [c for c in df.columns if c in STATIONS and c != "Start"]
-        for _, r in df.iterrows():
+        for idx, r in df.iterrows():
             rid = f"{year}-{r['Bib']}"
             finish_min = parse_time_to_minutes(r.get("Time"))
             runners.append({
@@ -195,7 +206,8 @@ def parse_splits():
                 "city": r.get("City"), "state": r.get("State"),
                 "country": r.get("Country"),
                 "finish_min": finish_min,
-                "finished": pd.notna(finish_min),
+                "sheet_place": place.loc[idx],
+                "finished": pd.notna(place.loc[idx]) and place.loc[idx] <= last_finisher,
             })
             for st in station_cols:
                 t = parse_time_to_minutes(r[st])
@@ -207,10 +219,13 @@ def parse_splits():
     runners = pd.DataFrame(runners)
     splits = pd.DataFrame(splits)
 
-    # Recompute gender place among finishers
+    # Recompute places among finishers. Rank on the sheet ordinal rather than
+    # finish_min: it gives the same order and still places the finishers whose
+    # Time cell is blank.
     fin = runners[runners.finished]
-    runners["overall_place"] = fin.groupby("year").finish_min.rank("first")
-    runners["gender_place"] = fin.groupby(["year", "gender"]).finish_min.rank("first")
+    runners["overall_place"] = fin.groupby("year").sheet_place.rank("first")
+    runners["gender_place"] = fin.groupby(["year", "gender"]).sheet_place.rank("first")
+    runners = runners.drop(columns="sheet_place")
 
     # Sanity: finish split should equal finish time where both exist
     chk = splits[splits.station == "Finish"].merge(

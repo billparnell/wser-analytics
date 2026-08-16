@@ -40,28 +40,56 @@ The dashboard is fed by `scripts/prep_dashboard_data.py` (pandas → CSVs in
       (11k rows, 1974–2025), while `runners`/`splits` are parsed from the local
       Excel in `data/raw/` (2017–2025). They are not the same pipeline and
       don't currently reconcile against each other.
-- [ ] Reconcile the two streams: does `runners` (2017–2025) agree with
-      `wser_results` for the overlapping years? A row-count and finish-time
-      diff by year is the test. If they disagree, decide which is canonical
-      before any mart is built on top.
+- [x] **Reconciled the two streams, and it found a bug.** 2017 disagreed by
+      two runners. `prep_dashboard_data.py` inferred finisher status from the
+      spreadsheet's Time cell, but the sheet lists all starters in one ordered
+      block — finishers ranked from 1, then DNFs continuing the numbering — so
+      two genuine 2017 finishers with blank Time cells (Sean Nowak, bib 381,
+      26:17:33; Maddy McCarthy, bib 262, 26:40:00) were counted as DNFs.
+      Fixed by deriving `finished` from the finisher block, which reproduces
+      wser.org's official count for all eight years. Also confirmed Meghan
+      Arbogast / Canfield is one runner under two surnames — names are not a
+      safe join key across the streams.
 - [ ] Consider gitignoring `data/processed/*.csv` too — also derived, and
       regenerable by `prep_dashboard_data.py`. Left tracked for now so the
       offline rebuild doesn't depend on parsing 40 spreadsheets.
 
 ### 0.1 Models
-- [ ] `stg_wser_results.sql` — one row per runner-year, typed and renamed
-- [ ] `stg_wser_splits.sql` — one row per runner-year-station (needed for
-      Phase 5 validation anyway; cheap to build now)
+- [x] `stg_wser_results.sql` — 11,046 rows, 1974–2025. Surrogate key over
+      (year, name, finish_minutes): ties make (year, place) non-unique, and two
+      different Paul Schmidts finished in 2000. Adds `finish_seconds` parsed
+      from the string (the scrape truncates to the minute), normalised
+      `gender` (M/F/NB from five reported spellings), `is_official_finish`
+      (false for runners recorded past the 30-hour cutoff) and `is_sub_24`.
+- [x] `stg_wser_runners.sql` — 2,928 starters, 2017–2025, with DNFs
+- [x] `stg_wser_splits.sql` — 52,131 rows, one per runner-station
+- [x] `stg_wser_aid_stations.sql` — 24 stations in course order
 - [ ] Mart: finisher trends by year
 - [ ] Mart: age-group breakdowns
-- [ ] Mart: multi-finish runners
+- [ ] Mart: multi-finish runners — note names are not a safe key
+      (Arbogast/Canfield); needs a real identity-resolution decision
 - [ ] Mart: sub-24 rates
 
 ### 0.2 Quality + ship
-- [ ] dbt tests: `unique`/`not_null` on the staging grain, `accepted_values` on
-      gender and status, a relationship test splits → results
-- [ ] Model + column descriptions, `dbt docs generate`
-- [ ] README section for the dbt layer (how to run it, what the models mean)
+- [x] dbt tests — 33 passing: unique/not_null on every staging grain,
+      `accepted_values` on gender and year, relationship tests splits →
+      runners and splits → aid_stations
+- [x] Two singular tests carrying the reconciliation:
+      `assert_results_and_runners_agree` (cross-source finisher counts must
+      match on 2017–2025 — verified it fails on the pre-fix data) and
+      `assert_finisher_counts_match_wser_org` (matches wser.org's published
+      summary, with 1990 and 2005 pinned as known exceptions)
+- [x] Source + model + column descriptions in yml
+- [x] README section for the dbt layer
+- [ ] `dbt docs generate` and decide whether to publish the site
+- [ ] **Unresolved upstream:** two separately scraped wser.org pages disagree.
+      1990 results list has 211 official finishers vs 208 in the summary (and
+      the list itself is odd — place 21 missing, one place shared); 2005 has a
+      clean gapless 1–318 sequence vs 317 in the summary. Both look like
+      summary-side errors. Resolving means going back to wser.org.
+- [ ] Decide whether `is_sub_24` should count people or places. wser.org's
+      summary appears to count places, so 1983 and 1984 differ by one where a
+      tie straddles the 24-hour line. The model currently counts people.
 - [ ] Push Phase 1 (results explorer) to GitHub with a clean README
 - [ ] Reconcile the phase numbering — the repo section calls the results explorer
       "Phase 1" and the phase list calls the baseline curve "Phase 1." Pick one

@@ -1,0 +1,50 @@
+version: 2
+
+sources:
+  - name: wser
+    description: >
+      Tables loaded into data/wser.duckdb by scripts/build_db.py. Two upstream
+      paths feed them, and they do not share a lineage: wser_results is scraped
+      from wser.org and covers every year, while runners/splits/aid_stations/
+      course_profile are parsed from the official splits spreadsheets in
+      data/raw/ and cover only 2017-2025.
+    database: wser
+    schema: main
+    tables:
+      - name: wser_results
+        description: >
+          Scraped finisher results, 1974-2025. One row per finisher per year.
+          1975, 2008 and 2020 are absent because no race was held (2008
+          wildfires, 2020 COVID; 1975 had no finishers).
+        columns:
+          - name: year
+            description: Race year.
+          - name: place
+            description: >
+              Official overall place. Null for the handful of runners recorded
+              past the 30-hour cutoff. Ties share a place, so (year, place) is
+              not unique.
+          - name: finish_time
+            description: Elapsed time as HH:MM:SS. Hours exceed 24, so this is not a clock time.
+          - name: finish_minutes
+            description: Finish time truncated to whole minutes by the scrape.
+
+      - name: wser_year_summary
+        description: Per-year starter, finisher and sub-24 counts scraped from wser.org.
+
+      - name: runners
+        description: >
+          One row per starter, 2017-2025, parsed from the official splits
+          spreadsheets. Includes bib, hometown and a finished flag.
+        columns:
+          - name: runner_id
+            description: Surrogate key, "<year>-<bib>".
+
+      - name: splits
+        description: One row per runner per aid station reached, 2017-2025.
+
+      - name: aid_stations
+        description: The 24 aid stations with official mile, cutoff and elevation.
+
+      - name: course_profile
+        description: Course elevation profile sampled from the official GPX.

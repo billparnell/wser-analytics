@@ -100,153 +100,153 @@ runner_id,year,bib,first_name,last_name,name,gender,age,city,state,country,finis
 2017-83,2017,83,Greg,Bargo,Greg Bargo,M,34,Tallahassee,FL,USA,1568.8,True,99.0,79.0
 2017-105,2017,105,Shavinder,Singh,Shavinder Singh,M,39,Fair Oaks,CA,USA,1569.45,True,100.0,80.0
 2017-165,2017,165,Troy,Dzioba,Troy Dzioba,M,45,Spruce Grove,AB,CAN,1571.3166666666666,True,101.0,81.0
-2017-381,2017,381,Sean,Nowak,Sean Nowak,M,41,Nairobi,KEN,KEN,,False,,
-2017-158,2017,158,David,Dirito,David Dirito,M,36,Chapel Hill,NC,USA,1578.3666666666666,True,102.0,82.0
-2017-359,2017,359,Robin,Young,Robin Young,F,27,Woodside,CA,USA,1582.3833333333334,True,103.0,21.0
-2017-334,2017,334,Tomas,Tencer,Tomas Tencer,M,40,Malacky,SVK,SVK,1584.3,True,104.0,83.0
-2017-64,2017,64,Robert,Gierula,Robert Gierula,M,53,Krakow,POL,POL,1591.75,True,105.0,84.0
-2017-171,2017,171,Daniel,Evans,Daniel Evans,M,39,Littleton,CO,USA,1594.2833333333333,True,106.0,85.0
-2017-278,2017,278,Jess,Mullen,Jess Mullen,F,42,Seattle,WA,USA,1599.8666666666666,True,107.0,22.0
-2017-262,2017,262,Maddy,McCarthy,Maddy McCarthy,F,33,Newburyport,MA,USA,,False,,
-2017-106,2017,106,West,Bourgault,West Bourgault,M,40,Auburn,CA,USA,1605.6833333333334,True,108.0,86.0
-2017-265,2017,265,Dan,Mcintyre,Dan Mcintyre,M,50,Fort Worth,TX,USA,1606.0333333333333,True,109.0,87.0
-2017-186,2017,186,Bob,Gerenz,Bob Gerenz,M,49,Fort Collins,CO,USA,1606.15,True,110.0,88.0
-2017-201,2017,201,Ron,Hammett,Ron Hammett,M,47,Las Vegas,NV,USA,1606.3333333333333,True,111.0,89.0
-2017-242,2017,242,Yuri,Lane,Yuri Lane,M,41,San Francisco,CA,USA,1608.0333333333333,True,112.0,90.0
-2017-97,2017,97,David,Binder,David Binder,M,49,LOS ANGELES,CA,USA,1608.05,True,113.0,91.0
-2017-168,2017,168,Stephen,England,Stephen England,M,37,New York,NY,USA,1611.6333333333334,True,114.0,92.0
-2017-354,2017,354,Robert,Scott,Robert Scott,M,47,Diamond Springs,CA,USA,1621.5333333333333,True,115.0,93.0
-2017-230,2017,230,Eric,Johnson,Eric Johnson,M,51,Red Bluff,CA,USA,1622.7,True,116.0,94.0
-2017-160,2017,160,Jason,Donaldson,Jason Donaldson,M,35,Portland,OR,USA,1625.45,True,117.0,95.0
-2017-343,2017,343,Katie,Wallace,Katie Wallace,F,34,Antioch,CA,USA,1627.8666666666666,True,118.0,23.0
-2017-218,2017,218,Paul,Huggins,Paul Huggins,M,42,Austin,TX,USA,1631.35,True,119.0,96.0
-2017-274,2017,274,Jason,Mintz,Jason Mintz,M,37,Syracuse,NY,USA,1634.0,True,120.0,97.0
-2017-75,2017,75,Kuni,Yamagata,Kuni Yamagata,M,64,Citrus Heights,CA,USA,1637.25,True,121.0,98.0
-2017-F8,2017,F8,Maggie,Guterl,Maggie Guterl,F,36,Newtown Square,PA,USA,1642.2166666666667,True,122.0,24.0
-2017-308,2017,308,Ronald,Green,Ronald Green,M,49,Bel Air,MD,USA,1643.1666666666667,True,123.0,99.0
-2017-244,2017,244,Mark,Lantz,Mark Lantz,M,51,Gold River,CA,USA,1649.1833333333334,True,124.0,100.0
-2017-224,2017,224,Chris,Perillo,Chris Perillo,M,47,Lincoln,CA,USA,1654.55,True,125.0,101.0
-2017-272,2017,272,Graham,Melvin,Graham Melvin,M,36,Bellingham,WA,USA,1656.5666666666666,True,126.0,102.0
-2017-369,2017,369,Luke,Laga,Luke Laga,M,40,Milwaukee,WI,USA,1657.1,True,127.0,103.0
-2017-220,2017,220,David,Iler,David Iler,M,40,Austin,TX,USA,1657.3333333333333,True,128.0,104.0
-2017-136,2017,136,Michael,Courtney,Michael Courtney,M,33,Wellington,NZL,NZL,1657.4833333333333,True,129.0,105.0
-2017-340,2017,340,Randy,Troyer,Randy Troyer,M,52,Lagrange,IN,USA,1657.55,True,130.0,106.0
-2017-20,2017,20,Joel,Frost-Tift,Joel Frost-Tift,M,29,Huntington Park,CA,USA,1661.0666666666666,True,131.0,107.0
-2017-228,2017,228,John,Jenkins III,John Jenkins III,M,43,Absecon,NJ,USA,1662.1333333333334,True,132.0,108.0
-2017-79,2017,79,Phil,Atkinson,Phil Atkinson,M,44,Casper,WY,USA,1662.9333333333334,True,133.0,109.0
-2017-131,2017,131,Stephanie,Dempsey,Stephanie Dempsey,F,40,Arlington,VA,USA,1664.4833333333333,True,134.0,25.0
-2017-269,2017,269,Nicholas,Balbach,Nicholas Balbach,M,35,Brownsburg,IN,USA,1666.5833333333333,True,135.0,110.0
-2017-143,2017,143,Steven,Labranche,Steven Labranche,M,43,Oakdale,CT,USA,1667.9,True,136.0,111.0
-2017-123,2017,123,Matthew,Searfus,Matthew Searfus,M,44,Lake Oswego,OR,USA,1668.8333333333333,True,137.0,112.0
-2017-226,2017,226,Tj,Jeannette,Tj Jeannette,M,42,North Mankato,MN,USA,1669.7166666666667,True,138.0,113.0
-2017-325,2017,325,Cindy,Stonesmith,Cindy Stonesmith,F,53,Louisville,CO,USA,1669.9833333333333,True,139.0,26.0
-2017-52,2017,52,John,Nichols,John Nichols,M,52,Sacramento,CA,USA,1670.4166666666667,True,140.0,114.0
-2017-67,2017,67,Nicholas,Banaszak,Nicholas Banaszak,M,30,Roseville,CA,USA,1670.8666666666666,True,141.0,115.0
-2017-56,2017,56,Alex,Massey,Alex Massey,M,29,Sydney,AUS,AUS,1671.2833333333333,True,142.0,116.0
-2017-398,2017,398,John,Fegyveresi,John Fegyveresi,M,40,Quechee,VT,USA,1671.7666666666667,True,143.0,117.0
-2017-41,2017,41,Ashley,Truan,Ashley Truan,F,34,Wixom,MI,USA,1673.35,True,144.0,27.0
-2017-393,2017,393,Andrew,Gzybowski,Andrew Gzybowski,M,35,Larkspur,CO,USA,1679.1,True,145.0,118.0
-2017-293,2017,293,Matt,Provencher,Matt Provencher,M,27,Santa Clara,CA,USA,1683.35,True,146.0,119.0
-2017-124,2017,124,Sam,Patterson,Sam Patterson,M,43,Cameron Park,CA,USA,1685.55,True,147.0,120.0
-2017-77,2017,77,Melissa,Johnson,Melissa Johnson,F,41,Auburn,CA,USA,1686.3333333333333,True,148.0,28.0
-2017-332,2017,332,Marc,Teismann,Marc Teismann,M,35,Salt Lake City,UT,USA,1688.1666666666667,True,149.0,121.0
-2017-195,2017,195,Kristin,Gustafsson,Kristin Gustafsson,F,48,Folsom,CA,USA,1688.4,True,150.0,29.0
-2017-257,2017,257,Pedro,Martinez,Pedro Martinez,M,31,Van Nuys,CA,USA,1693.0833333333333,True,151.0,122.0
-2017-185,2017,185,Andrea,Gautschi,Andrea Gautschi,F,45,Lotus,CA,USA,1693.7666666666667,True,152.0,30.0
-2017-98,2017,98,Johanna,Blanchard,Johanna Blanchard,F,32,Roseburg,OR,USA,1693.9,True,153.0,31.0
-2017-233,2017,233,Genia,Kacey-McKnight,Genia Kacey-McKnight,F,41,Bothell,WA,USA,1693.9166666666667,True,154.0,32.0
-2017-63,2017,63,David,Aguayo,David Aguayo,M,41,Los Osos,CA,USA,1694.6666666666667,True,155.0,123.0
-2017-200,2017,200,Gary,Wang,Gary Wang,M,49,Corte Madera,CA,USA,1694.8,True,156.0,124.0
-2017-172,2017,172,Geoff,Evison,Geoff Evison,M,51,Sydney,AUS,AUS,1696.2666666666667,True,157.0,125.0
-2017-314,2017,314,Jim,Roche,Jim Roche,M,48,Swansboro,NC,USA,1696.35,True,158.0,126.0
-2017-286,2017,286,Kevin,Patja,Kevin Patja,M,41,Lincoln,CA,USA,1697.4833333333333,True,159.0,127.0
-2017-279,2017,279,Gregory,Lynch,Gregory Lynch,M,49,El Macero,CA,USA,1698.5333333333333,True,160.0,128.0
-2017-208,2017,208,Dale,Hawkins,Dale Hawkins,M,43,Erie,CO,USA,1702.05,True,161.0,129.0
-2017-130,2017,130,Pete,Coleman,Pete Coleman,M,43,Marietta,GA,USA,1705.8,True,162.0,130.0
-2017-155,2017,155,Ron,Delozier,Ron Delozier,M,39,Columbus,OH,USA,1705.85,True,163.0,131.0
-2017-129,2017,129,Emily,Clay,Emily Clay,F,27,Baltimore,MD,USA,1708.1833333333334,True,164.0,33.0
-2017-231,2017,231,Chris,Jones,Chris Jones,M,45,Sonoma,CA,USA,1711.3833333333334,True,165.0,132.0
-2017-100,2017,100,John,Lacroix,John Lacroix,M,35,Castle Rock,CO,USA,1711.5333333333333,True,166.0,133.0
-2017-249,2017,249,David,Leeke,David Leeke,M,40,Nevada City,CA,USA,1711.8333333333333,True,167.0,134.0
-2017-132,2017,132,Brent,Colwell,Brent Colwell,M,39,Martinsville,IN,USA,1712.9166666666667,True,168.0,135.0
-2017-396,2017,396,James,Whipple,James Whipple,M,39,Norwalk,CT,USA,1713.1333333333334,True,169.0,136.0
-2017-319,2017,319,Adam,Stepanovic,Adam Stepanovic,M,33,Santa Cruz,CA,USA,1715.2,True,170.0,137.0
-2017-153,2017,153,Michael,Dehaye,Michael Dehaye,M,47,Huntsville,AL,USA,1715.7333333333333,True,171.0,138.0
-2017-225,2017,225,Alyson,Jay,Alyson Jay,F,38,Flagstaff,AZ,USA,1715.9,True,172.0,34.0
-2017-282,2017,282,Jamie,Nott,Jamie Nott,M,42,Calgary,AB,CAN,1715.9666666666667,True,173.0,139.0
-2017-141,2017,141,Jordan,Cravens,Jordan Cravens,M,23,Evansville,IN,USA,1716.2833333333333,True,174.0,140.0
-2017-348,2017,348,Troy,Windsor,Troy Windsor,M,49,Oakland,CA,USA,1720.2,True,175.0,141.0
-2017-212,2017,212,Michael,Chu,Michael Chu,M,34,Jackson Heights,NY,USA,1720.7,True,176.0,142.0
-2017-166,2017,166,Andrew,Ewing,Andrew Ewing,M,39,Corte Madera,CA,USA,1722.0333333333333,True,177.0,143.0
-2017-277,2017,277,Jason,Moriarty,Jason Moriarty,M,33,Foresthill,CA,USA,1722.1833333333334,True,178.0,144.0
-2017-177,2017,177,Gary,Klein,Gary Klein,M,51,Folsom,CA,USA,1722.5,True,179.0,145.0
-2017-58,2017,58,Kenneth,Gregorich,Kenneth Gregorich,M,58,Castro Valley,CA,USA,1724.2,True,180.0,146.0
-2017-78,2017,78,Eric,Geidel,Eric Geidel,M,39,Trier,DEU,DEU,1724.2333333333333,True,181.0,147.0
-2017-219,2017,219,Charles,Humphrey III,Charles Humphrey III,M,40,Asheville,NC,USA,1724.4666666666667,True,182.0,148.0
-2017-333,2017,333,David,Files,David Files,M,42,Batavia,IL,USA,1728.2333333333333,True,183.0,149.0
-2017-260,2017,260,Charley,Jones,Charley Jones,M,45,Folsom,CA,USA,1728.5666666666666,True,184.0,150.0
-2017-60,2017,60,Keith,Blom,Keith Blom,M,60,San Jose,CA,USA,1731.1166666666666,True,185.0,151.0
-2017-203,2017,203,Kevin,Harris,Kevin Harris,M,39,Stellenbosch,ZAF,ZAF,1731.55,True,186.0,152.0
-2017-68,2017,68,Petr,Hruby,Petr Hruby,M,43,Velke Popovice,CZE,CZE,1732.55,True,187.0,153.0
-2017-374,2017,374,Thomas,Wong,Thomas Wong,M,47,Bloomfield,NJ,USA,1732.8,True,188.0,154.0
-2017-57,2017,57,Brent,Abbott,Brent Abbott,M,34,Boulder,CO,USA,1734.5333333333333,True,189.0,155.0
-2017-235,2017,235,Sarah,Keyes,Sarah Keyes,F,32,Saranac Lake,NY,USA,1735.65,True,190.0,35.0
-2017-80,2017,80,Paul,Grimes,Paul Grimes,M,42,Loomis,CA,USA,1736.6833333333334,True,191.0,156.0
-2017-345,2017,345,Rebecca,Watters,Rebecca Watters,F,31,ATLANTA,GA,USA,1737.75,True,192.0,36.0
-2017-411,2017,411,Kelly,Valentine,Kelly Valentine,F,39,Sacramento,CA,USA,1738.1666666666667,True,193.0,37.0
-2017-113,2017,113,Joel,Tapley,Joel Tapley,M,49,Dallas,GA,USA,1738.6666666666667,True,194.0,157.0
-2017-142,2017,142,Luis,Barrios,Luis Barrios,M,52,Tampa,FL,USA,1740.2166666666667,True,195.0,158.0
-2017-358,2017,358,Mikiko,Yatsuhashi,Mikiko Yatsuhashi,F,41,Fujisawa,JPN,JPN,1743.1666666666667,True,196.0,38.0
-2017-281,2017,281,Kevin,Niksich,Kevin Niksich,M,43,Cumming,GA,USA,1744.45,True,197.0,159.0
-2017-336,2017,336,Scott,Thomsen,Scott Thomsen,M,36,Pinole,CA,USA,1745.0,True,198.0,160.0
-2017-382,2017,382,Peter,Brewer,Peter Brewer,M,54,Bend,OR,USA,1745.2,True,199.0,161.0
-2017-139,2017,139,Peter,Coyle,Peter Coyle,M,51,Warrenpoint,GBR,IRL,1747.8833333333334,True,200.0,162.0
-2017-291,2017,291,John,Pollard,John Pollard,M,36,Locust Grove,GA,USA,1748.45,True,201.0,163.0
-2017-247,2017,247,Sean,Hensley,Sean Hensley,M,44,Mentor,OH,USA,1749.2833333333333,True,202.0,164.0
-2017-182,2017,182,Wilson,Frazier,Wilson Frazier,M,44,Louisville,KY,USA,1751.2666666666667,True,203.0,165.0
-2017-337,2017,337,Craig,Thornley,Craig Thornley,M,53,Auburn,CA,USA,1751.8166666666666,True,204.0,166.0
-2017-355,2017,355,Pete,Wright,Pete Wright,M,44,St Saviour,GBR,GBR,1753.25,True,205.0,167.0
-2017-335,2017,335,Bill,Thompson,Bill Thompson,M,51,Moon Twp,PA,USA,1755.8333333333333,True,206.0,168.0
-2017-311,2017,311,Charlotte,Smith,Charlotte Smith,F,42,London,GBR,GBR,1757.1166666666666,True,207.0,39.0
-2017-292,2017,292,Mariano,Pontillas,Mariano Pontillas,M,43,Sacramento,CA,USA,1760.3666666666666,True,208.0,169.0
-2017-126,2017,126,Charles,Christopher,Charles Christopher,M,43,Holly Springs,NC,USA,1760.8333333333333,True,209.0,170.0
-2017-161,2017,161,Marie,Donovan,Marie Donovan,F,39,Henderson,NV,USA,1762.15,True,210.0,40.0
-2017-289,2017,289,Brian,Pfister,Brian Pfister,M,45,Wilmette,IL,USA,1764.25,True,211.0,171.0
-2017-300,2017,300,Brian,Robinson,Brian Robinson,M,55,Seaside,CA,USA,1764.6,True,212.0,172.0
-2017-89,2017,89,Alan,Barichievich,Alan Barichievich,M,50,South Lake Tahoe,CA,USA,1764.85,True,213.0,173.0
-2017-88,2017,88,Caroline,Barichievich,Caroline Barichievich,F,45,South Lake Tahoe,CA,USA,1764.85,True,214.0,41.0
-2017-295,2017,295,Rick,Rawls,Rick Rawls,M,46,Huntsville,AL,USA,1765.8333333333333,True,215.0,174.0
-2017-232,2017,232,Craig,Jordan,Craig Jordan,M,54,Dubai,ARE,ARE,1765.9166666666667,True,216.0,175.0
-2017-370,2017,370,Jimmy,Brown,Jimmy Brown,M,47,Omaha,NE,USA,1766.0,True,217.0,176.0
-2017-330,2017,330,Keisuke,Tanaka,Keisuke Tanaka,M,35,Osaka-Shi Higashisumiyoshi-Ku,JPN,JPN,1766.7,True,218.0,177.0
-2017-389,2017,389,Conan,Blakemore,Conan Blakemore,M,34,Conifer,CO,USA,1767.15,True,219.0,178.0
-2017-222,2017,222,Alan,Reynolds,Alan Reynolds,M,50,Pacifica,CA,USA,1767.25,True,220.0,179.0
-2017-392,2017,392,Rick,Gaston,Rick Gaston,M,45,San Francisco,CA,USA,1769.25,True,221.0,180.0
-2017-127,2017,127,Christian,Beck,Christian Beck,M,45,Eugene,OR,USA,1769.4666666666667,True,222.0,181.0
-2017-266,2017,266,John,McKune,John McKune,M,41,Fremont,CA,USA,1769.85,True,223.0,182.0
-2017-329,2017,329,Joey,Tajan,Joey Tajan,M,32,Lincoln,CA,USA,1770.6666666666667,True,224.0,183.0
-2017-276,2017,276,Deano,Montreuil,Deano Montreuil,M,49,Suwanee,GA,USA,1770.8833333333334,True,225.0,184.0
-2017-71,2017,71,James,Baca,James Baca,M,46,St. Louis,MO,USA,1773.0333333333333,True,226.0,185.0
-2017-122,2017,122,Steve,Chambers,Steve Chambers,M,37,Lakewood,CO,USA,1773.1333333333334,True,227.0,186.0
-2017-268,2017,268,Travis,McWhorter,Travis McWhorter,M,30,Albuquerque,NM,USA,1773.5666666666666,True,228.0,187.0
-2017-192,2017,192,Paul,Grove,Paul Grove,M,39,Kent,WA,USA,1774.2666666666667,True,229.0,188.0
-2017-395,2017,395,Andrew,Chapello,Andrew Chapello,M,28,San Franciso,CA,USA,1775.8833333333334,True,230.0,189.0
-2017-316,2017,316,Willem,Van Dam,Willem Van Dam,M,54,Novato,CA,USA,1776.2333333333333,True,231.0,190.0
-2017-59,2017,59,Andy,Black,Andy Black,M,59,Oakland,CA,USA,1776.2333333333333,True,232.0,191.0
-2017-112,2017,112,Julie,Seydel,Julie Seydel,F,50,Louisville,CO,USA,1777.6833333333334,True,233.0,42.0
-2017-302,2017,302,Chloe,Romero,Chloe Romero,F,26,Auburn,CA,USA,1778.0333333333333,True,234.0,43.0
-2017-251,2017,251,Jeffery,Lung,Jeffery Lung,M,38,Chicago,IL,USA,1778.75,True,235.0,192.0
-2017-303,2017,303,Charles,West,Charles West,M,48,Cary,NC,USA,1779.5166666666667,True,236.0,193.0
-2017-180,2017,180,Geoffrey,Foote,Geoffrey Foote,M,49,Chandler,AZ,USA,1780.7666666666667,True,237.0,194.0
-2017-288,2017,288,Thomas,Peterson,Thomas Peterson,M,56,Newtown,PA,USA,1781.6166666666666,True,238.0,195.0
-2017-66,2017,66,Scott,Mills,Scott Mills,M,66,Oceanside,CA,USA,1784.85,True,239.0,196.0
-2017-196,2017,196,Lourdes,Gutierrez-Kellam,Lourdes Gutierrez-Kellam,F,49,Calgary,AB,CAN,1785.1166666666666,True,240.0,44.0
-2017-191,2017,191,Patrick,Grengs,Patrick Grengs,M,52,West Richland,WA,USA,1785.1333333333334,True,241.0,197.0
-2017-193,2017,193,Sean,Grove,Sean Grove,M,44,Novato,CA,USA,1787.6833333333334,True,242.0,198.0
-2017-296,2017,296,Hector,Reyes,Hector Reyes,M,34,ARVADA,CO,USA,1789.4666666666667,True,243.0,199.0
-2017-252,2017,252,Steven,Macdonald,Steven Macdonald,M,50,Dallas,TX,USA,1792.9166666666667,True,244.0,200.0
-2017-187,2017,187,Lance,Gilbert,Lance Gilbert,M,61,Folsom,CA,USA,1799.1166666666666,True,245.0,201.0
-2017-103,2017,103,Karen,Bonnett-Natraj,Karen Bonnett-Natraj,F,61,Auburn,CA,USA,1799.85,True,246.0,45.0
+2017-381,2017,381,Sean,Nowak,Sean Nowak,M,41,Nairobi,KEN,KEN,,True,102.0,82.0
+2017-158,2017,158,David,Dirito,David Dirito,M,36,Chapel Hill,NC,USA,1578.3666666666666,True,103.0,83.0
+2017-359,2017,359,Robin,Young,Robin Young,F,27,Woodside,CA,USA,1582.3833333333334,True,104.0,21.0
+2017-334,2017,334,Tomas,Tencer,Tomas Tencer,M,40,Malacky,SVK,SVK,1584.3,True,105.0,84.0
+2017-64,2017,64,Robert,Gierula,Robert Gierula,M,53,Krakow,POL,POL,1591.75,True,106.0,85.0
+2017-171,2017,171,Daniel,Evans,Daniel Evans,M,39,Littleton,CO,USA,1594.2833333333333,True,107.0,86.0
+2017-278,2017,278,Jess,Mullen,Jess Mullen,F,42,Seattle,WA,USA,1599.8666666666666,True,108.0,22.0
+2017-262,2017,262,Maddy,McCarthy,Maddy McCarthy,F,33,Newburyport,MA,USA,,True,109.0,23.0
+2017-106,2017,106,West,Bourgault,West Bourgault,M,40,Auburn,CA,USA,1605.6833333333334,True,110.0,87.0
+2017-265,2017,265,Dan,Mcintyre,Dan Mcintyre,M,50,Fort Worth,TX,USA,1606.0333333333333,True,111.0,88.0
+2017-186,2017,186,Bob,Gerenz,Bob Gerenz,M,49,Fort Collins,CO,USA,1606.15,True,112.0,89.0
+2017-201,2017,201,Ron,Hammett,Ron Hammett,M,47,Las Vegas,NV,USA,1606.3333333333333,True,113.0,90.0
+2017-242,2017,242,Yuri,Lane,Yuri Lane,M,41,San Francisco,CA,USA,1608.0333333333333,True,114.0,91.0
+2017-97,2017,97,David,Binder,David Binder,M,49,LOS ANGELES,CA,USA,1608.05,True,115.0,92.0
+2017-168,2017,168,Stephen,England,Stephen England,M,37,New York,NY,USA,1611.6333333333334,True,116.0,93.0
+2017-354,2017,354,Robert,Scott,Robert Scott,M,47,Diamond Springs,CA,USA,1621.5333333333333,True,117.0,94.0
+2017-230,2017,230,Eric,Johnson,Eric Johnson,M,51,Red Bluff,CA,USA,1622.7,True,118.0,95.0
+2017-160,2017,160,Jason,Donaldson,Jason Donaldson,M,35,Portland,OR,USA,1625.45,True,119.0,96.0
+2017-343,2017,343,Katie,Wallace,Katie Wallace,F,34,Antioch,CA,USA,1627.8666666666666,True,120.0,24.0
+2017-218,2017,218,Paul,Huggins,Paul Huggins,M,42,Austin,TX,USA,1631.35,True,121.0,97.0
+2017-274,2017,274,Jason,Mintz,Jason Mintz,M,37,Syracuse,NY,USA,1634.0,True,122.0,98.0
+2017-75,2017,75,Kuni,Yamagata,Kuni Yamagata,M,64,Citrus Heights,CA,USA,1637.25,True,123.0,99.0
+2017-F8,2017,F8,Maggie,Guterl,Maggie Guterl,F,36,Newtown Square,PA,USA,1642.2166666666667,True,124.0,25.0
+2017-308,2017,308,Ronald,Green,Ronald Green,M,49,Bel Air,MD,USA,1643.1666666666667,True,125.0,100.0
+2017-244,2017,244,Mark,Lantz,Mark Lantz,M,51,Gold River,CA,USA,1649.1833333333334,True,126.0,101.0
+2017-224,2017,224,Chris,Perillo,Chris Perillo,M,47,Lincoln,CA,USA,1654.55,True,127.0,102.0
+2017-272,2017,272,Graham,Melvin,Graham Melvin,M,36,Bellingham,WA,USA,1656.5666666666666,True,128.0,103.0
+2017-369,2017,369,Luke,Laga,Luke Laga,M,40,Milwaukee,WI,USA,1657.1,True,129.0,104.0
+2017-220,2017,220,David,Iler,David Iler,M,40,Austin,TX,USA,1657.3333333333333,True,130.0,105.0
+2017-136,2017,136,Michael,Courtney,Michael Courtney,M,33,Wellington,NZL,NZL,1657.4833333333333,True,131.0,106.0
+2017-340,2017,340,Randy,Troyer,Randy Troyer,M,52,Lagrange,IN,USA,1657.55,True,132.0,107.0
+2017-20,2017,20,Joel,Frost-Tift,Joel Frost-Tift,M,29,Huntington Park,CA,USA,1661.0666666666666,True,133.0,108.0
+2017-228,2017,228,John,Jenkins III,John Jenkins III,M,43,Absecon,NJ,USA,1662.1333333333334,True,134.0,109.0
+2017-79,2017,79,Phil,Atkinson,Phil Atkinson,M,44,Casper,WY,USA,1662.9333333333334,True,135.0,110.0
+2017-131,2017,131,Stephanie,Dempsey,Stephanie Dempsey,F,40,Arlington,VA,USA,1664.4833333333333,True,136.0,26.0
+2017-269,2017,269,Nicholas,Balbach,Nicholas Balbach,M,35,Brownsburg,IN,USA,1666.5833333333333,True,137.0,111.0
+2017-143,2017,143,Steven,Labranche,Steven Labranche,M,43,Oakdale,CT,USA,1667.9,True,138.0,112.0
+2017-123,2017,123,Matthew,Searfus,Matthew Searfus,M,44,Lake Oswego,OR,USA,1668.8333333333333,True,139.0,113.0
+2017-226,2017,226,Tj,Jeannette,Tj Jeannette,M,42,North Mankato,MN,USA,1669.7166666666667,True,140.0,114.0
+2017-325,2017,325,Cindy,Stonesmith,Cindy Stonesmith,F,53,Louisville,CO,USA,1669.9833333333333,True,141.0,27.0
+2017-52,2017,52,John,Nichols,John Nichols,M,52,Sacramento,CA,USA,1670.4166666666667,True,142.0,115.0
+2017-67,2017,67,Nicholas,Banaszak,Nicholas Banaszak,M,30,Roseville,CA,USA,1670.8666666666666,True,143.0,116.0
+2017-56,2017,56,Alex,Massey,Alex Massey,M,29,Sydney,AUS,AUS,1671.2833333333333,True,144.0,117.0
+2017-398,2017,398,John,Fegyveresi,John Fegyveresi,M,40,Quechee,VT,USA,1671.7666666666667,True,145.0,118.0
+2017-41,2017,41,Ashley,Truan,Ashley Truan,F,34,Wixom,MI,USA,1673.35,True,146.0,28.0
+2017-393,2017,393,Andrew,Gzybowski,Andrew Gzybowski,M,35,Larkspur,CO,USA,1679.1,True,147.0,119.0
+2017-293,2017,293,Matt,Provencher,Matt Provencher,M,27,Santa Clara,CA,USA,1683.35,True,148.0,120.0
+2017-124,2017,124,Sam,Patterson,Sam Patterson,M,43,Cameron Park,CA,USA,1685.55,True,149.0,121.0
+2017-77,2017,77,Melissa,Johnson,Melissa Johnson,F,41,Auburn,CA,USA,1686.3333333333333,True,150.0,29.0
+2017-332,2017,332,Marc,Teismann,Marc Teismann,M,35,Salt Lake City,UT,USA,1688.1666666666667,True,151.0,122.0
+2017-195,2017,195,Kristin,Gustafsson,Kristin Gustafsson,F,48,Folsom,CA,USA,1688.4,True,152.0,30.0
+2017-257,2017,257,Pedro,Martinez,Pedro Martinez,M,31,Van Nuys,CA,USA,1693.0833333333333,True,153.0,123.0
+2017-185,2017,185,Andrea,Gautschi,Andrea Gautschi,F,45,Lotus,CA,USA,1693.7666666666667,True,154.0,31.0
+2017-98,2017,98,Johanna,Blanchard,Johanna Blanchard,F,32,Roseburg,OR,USA,1693.9,True,155.0,32.0
+2017-233,2017,233,Genia,Kacey-McKnight,Genia Kacey-McKnight,F,41,Bothell,WA,USA,1693.9166666666667,True,156.0,33.0
+2017-63,2017,63,David,Aguayo,David Aguayo,M,41,Los Osos,CA,USA,1694.6666666666667,True,157.0,124.0
+2017-200,2017,200,Gary,Wang,Gary Wang,M,49,Corte Madera,CA,USA,1694.8,True,158.0,125.0
+2017-172,2017,172,Geoff,Evison,Geoff Evison,M,51,Sydney,AUS,AUS,1696.2666666666667,True,159.0,126.0
+2017-314,2017,314,Jim,Roche,Jim Roche,M,48,Swansboro,NC,USA,1696.35,True,160.0,127.0
+2017-286,2017,286,Kevin,Patja,Kevin Patja,M,41,Lincoln,CA,USA,1697.4833333333333,True,161.0,128.0
+2017-279,2017,279,Gregory,Lynch,Gregory Lynch,M,49,El Macero,CA,USA,1698.5333333333333,True,162.0,129.0
+2017-208,2017,208,Dale,Hawkins,Dale Hawkins,M,43,Erie,CO,USA,1702.05,True,163.0,130.0
+2017-130,2017,130,Pete,Coleman,Pete Coleman,M,43,Marietta,GA,USA,1705.8,True,164.0,131.0
+2017-155,2017,155,Ron,Delozier,Ron Delozier,M,39,Columbus,OH,USA,1705.85,True,165.0,132.0
+2017-129,2017,129,Emily,Clay,Emily Clay,F,27,Baltimore,MD,USA,1708.1833333333334,True,166.0,34.0
+2017-231,2017,231,Chris,Jones,Chris Jones,M,45,Sonoma,CA,USA,1711.3833333333334,True,167.0,133.0
+2017-100,2017,100,John,Lacroix,John Lacroix,M,35,Castle Rock,CO,USA,1711.5333333333333,True,168.0,134.0
+2017-249,2017,249,David,Leeke,David Leeke,M,40,Nevada City,CA,USA,1711.8333333333333,True,169.0,135.0
+2017-132,2017,132,Brent,Colwell,Brent Colwell,M,39,Martinsville,IN,USA,1712.9166666666667,True,170.0,136.0
+2017-396,2017,396,James,Whipple,James Whipple,M,39,Norwalk,CT,USA,1713.1333333333334,True,171.0,137.0
+2017-319,2017,319,Adam,Stepanovic,Adam Stepanovic,M,33,Santa Cruz,CA,USA,1715.2,True,172.0,138.0
+2017-153,2017,153,Michael,Dehaye,Michael Dehaye,M,47,Huntsville,AL,USA,1715.7333333333333,True,173.0,139.0
+2017-225,2017,225,Alyson,Jay,Alyson Jay,F,38,Flagstaff,AZ,USA,1715.9,True,174.0,35.0
+2017-282,2017,282,Jamie,Nott,Jamie Nott,M,42,Calgary,AB,CAN,1715.9666666666667,True,175.0,140.0
+2017-141,2017,141,Jordan,Cravens,Jordan Cravens,M,23,Evansville,IN,USA,1716.2833333333333,True,176.0,141.0
+2017-348,2017,348,Troy,Windsor,Troy Windsor,M,49,Oakland,CA,USA,1720.2,True,177.0,142.0
+2017-212,2017,212,Michael,Chu,Michael Chu,M,34,Jackson Heights,NY,USA,1720.7,True,178.0,143.0
+2017-166,2017,166,Andrew,Ewing,Andrew Ewing,M,39,Corte Madera,CA,USA,1722.0333333333333,True,179.0,144.0
+2017-277,2017,277,Jason,Moriarty,Jason Moriarty,M,33,Foresthill,CA,USA,1722.1833333333334,True,180.0,145.0
+2017-177,2017,177,Gary,Klein,Gary Klein,M,51,Folsom,CA,USA,1722.5,True,181.0,146.0
+2017-58,2017,58,Kenneth,Gregorich,Kenneth Gregorich,M,58,Castro Valley,CA,USA,1724.2,True,182.0,147.0
+2017-78,2017,78,Eric,Geidel,Eric Geidel,M,39,Trier,DEU,DEU,1724.2333333333333,True,183.0,148.0
+2017-219,2017,219,Charles,Humphrey III,Charles Humphrey III,M,40,Asheville,NC,USA,1724.4666666666667,True,184.0,149.0
+2017-333,2017,333,David,Files,David Files,M,42,Batavia,IL,USA,1728.2333333333333,True,185.0,150.0
+2017-260,2017,260,Charley,Jones,Charley Jones,M,45,Folsom,CA,USA,1728.5666666666666,True,186.0,151.0
+2017-60,2017,60,Keith,Blom,Keith Blom,M,60,San Jose,CA,USA,1731.1166666666666,True,187.0,152.0
+2017-203,2017,203,Kevin,Harris,Kevin Harris,M,39,Stellenbosch,ZAF,ZAF,1731.55,True,188.0,153.0
+2017-68,2017,68,Petr,Hruby,Petr Hruby,M,43,Velke Popovice,CZE,CZE,1732.55,True,189.0,154.0
+2017-374,2017,374,Thomas,Wong,Thomas Wong,M,47,Bloomfield,NJ,USA,1732.8,True,190.0,155.0
+2017-57,2017,57,Brent,Abbott,Brent Abbott,M,34,Boulder,CO,USA,1734.5333333333333,True,191.0,156.0
+2017-235,2017,235,Sarah,Keyes,Sarah Keyes,F,32,Saranac Lake,NY,USA,1735.65,True,192.0,36.0
+2017-80,2017,80,Paul,Grimes,Paul Grimes,M,42,Loomis,CA,USA,1736.6833333333334,True,193.0,157.0
+2017-345,2017,345,Rebecca,Watters,Rebecca Watters,F,31,ATLANTA,GA,USA,1737.75,True,194.0,37.0
+2017-411,2017,411,Kelly,Valentine,Kelly Valentine,F,39,Sacramento,CA,USA,1738.1666666666667,True,195.0,38.0
+2017-113,2017,113,Joel,Tapley,Joel Tapley,M,49,Dallas,GA,USA,1738.6666666666667,True,196.0,158.0
+2017-142,2017,142,Luis,Barrios,Luis Barrios,M,52,Tampa,FL,USA,1740.2166666666667,True,197.0,159.0
+2017-358,2017,358,Mikiko,Yatsuhashi,Mikiko Yatsuhashi,F,41,Fujisawa,JPN,JPN,1743.1666666666667,True,198.0,39.0
+2017-281,2017,281,Kevin,Niksich,Kevin Niksich,M,43,Cumming,GA,USA,1744.45,True,199.0,160.0
+2017-336,2017,336,Scott,Thomsen,Scott Thomsen,M,36,Pinole,CA,USA,1745.0,True,200.0,161.0
+2017-382,2017,382,Peter,Brewer,Peter Brewer,M,54,Bend,OR,USA,1745.2,True,201.0,162.0
+2017-139,2017,139,Peter,Coyle,Peter Coyle,M,51,Warrenpoint,GBR,IRL,1747.8833333333334,True,202.0,163.0
+2017-291,2017,291,John,Pollard,John Pollard,M,36,Locust Grove,GA,USA,1748.45,True,203.0,164.0
+2017-247,2017,247,Sean,Hensley,Sean Hensley,M,44,Mentor,OH,USA,1749.2833333333333,True,204.0,165.0
+2017-182,2017,182,Wilson,Frazier,Wilson Frazier,M,44,Louisville,KY,USA,1751.2666666666667,True,205.0,166.0
+2017-337,2017,337,Craig,Thornley,Craig Thornley,M,53,Auburn,CA,USA,1751.8166666666666,True,206.0,167.0
+2017-355,2017,355,Pete,Wright,Pete Wright,M,44,St Saviour,GBR,GBR,1753.25,True,207.0,168.0
+2017-335,2017,335,Bill,Thompson,Bill Thompson,M,51,Moon Twp,PA,USA,1755.8333333333333,True,208.0,169.0
+2017-311,2017,311,Charlotte,Smith,Charlotte Smith,F,42,London,GBR,GBR,1757.1166666666666,True,209.0,40.0
+2017-292,2017,292,Mariano,Pontillas,Mariano Pontillas,M,43,Sacramento,CA,USA,1760.3666666666666,True,210.0,170.0
+2017-126,2017,126,Charles,Christopher,Charles Christopher,M,43,Holly Springs,NC,USA,1760.8333333333333,True,211.0,171.0
+2017-161,2017,161,Marie,Donovan,Marie Donovan,F,39,Henderson,NV,USA,1762.15,True,212.0,41.0
+2017-289,2017,289,Brian,Pfister,Brian Pfister,M,45,Wilmette,IL,USA,1764.25,True,213.0,172.0
+2017-300,2017,300,Brian,Robinson,Brian Robinson,M,55,Seaside,CA,USA,1764.6,True,214.0,173.0
+2017-89,2017,89,Alan,Barichievich,Alan Barichievich,M,50,South Lake Tahoe,CA,USA,1764.85,True,215.0,174.0
+2017-88,2017,88,Caroline,Barichievich,Caroline Barichievich,F,45,South Lake Tahoe,CA,USA,1764.85,True,216.0,42.0
+2017-295,2017,295,Rick,Rawls,Rick Rawls,M,46,Huntsville,AL,USA,1765.8333333333333,True,217.0,175.0
+2017-232,2017,232,Craig,Jordan,Craig Jordan,M,54,Dubai,ARE,ARE,1765.9166666666667,True,218.0,176.0
+2017-370,2017,370,Jimmy,Brown,Jimmy Brown,M,47,Omaha,NE,USA,1766.0,True,219.0,177.0
+2017-330,2017,330,Keisuke,Tanaka,Keisuke Tanaka,M,35,Osaka-Shi Higashisumiyoshi-Ku,JPN,JPN,1766.7,True,220.0,178.0
+2017-389,2017,389,Conan,Blakemore,Conan Blakemore,M,34,Conifer,CO,USA,1767.15,True,221.0,179.0
+2017-222,2017,222,Alan,Reynolds,Alan Reynolds,M,50,Pacifica,CA,USA,1767.25,True,222.0,180.0
+2017-392,2017,392,Rick,Gaston,Rick Gaston,M,45,San Francisco,CA,USA,1769.25,True,223.0,181.0
+2017-127,2017,127,Christian,Beck,Christian Beck,M,45,Eugene,OR,USA,1769.4666666666667,True,224.0,182.0
+2017-266,2017,266,John,McKune,John McKune,M,41,Fremont,CA,USA,1769.85,True,225.0,183.0
+2017-329,2017,329,Joey,Tajan,Joey Tajan,M,32,Lincoln,CA,USA,1770.6666666666667,True,226.0,184.0
+2017-276,2017,276,Deano,Montreuil,Deano Montreuil,M,49,Suwanee,GA,USA,1770.8833333333334,True,227.0,185.0
+2017-71,2017,71,James,Baca,James Baca,M,46,St. Louis,MO,USA,1773.0333333333333,True,228.0,186.0
+2017-122,2017,122,Steve,Chambers,Steve Chambers,M,37,Lakewood,CO,USA,1773.1333333333334,True,229.0,187.0
+2017-268,2017,268,Travis,McWhorter,Travis McWhorter,M,30,Albuquerque,NM,USA,1773.5666666666666,True,230.0,188.0
+2017-192,2017,192,Paul,Grove,Paul Grove,M,39,Kent,WA,USA,1774.2666666666667,True,231.0,189.0
+2017-395,2017,395,Andrew,Chapello,Andrew Chapello,M,28,San Franciso,CA,USA,1775.8833333333334,True,232.0,190.0
+2017-316,2017,316,Willem,Van Dam,Willem Van Dam,M,54,Novato,CA,USA,1776.2333333333333,True,233.0,191.0
+2017-59,2017,59,Andy,Black,Andy Black,M,59,Oakland,CA,USA,1776.2333333333333,True,234.0,192.0
+2017-112,2017,112,Julie,Seydel,Julie Seydel,F,50,Louisville,CO,USA,1777.6833333333334,True,235.0,43.0
+2017-302,2017,302,Chloe,Romero,Chloe Romero,F,26,Auburn,CA,USA,1778.0333333333333,True,236.0,44.0
+2017-251,2017,251,Jeffery,Lung,Jeffery Lung,M,38,Chicago,IL,USA,1778.75,True,237.0,193.0
+2017-303,2017,303,Charles,West,Charles West,M,48,Cary,NC,USA,1779.5166666666667,True,238.0,194.0
+2017-180,2017,180,Geoffrey,Foote,Geoffrey Foote,M,49,Chandler,AZ,USA,1780.7666666666667,True,239.0,195.0
+2017-288,2017,288,Thomas,Peterson,Thomas Peterson,M,56,Newtown,PA,USA,1781.6166666666666,True,240.0,196.0
+2017-66,2017,66,Scott,Mills,Scott Mills,M,66,Oceanside,CA,USA,1784.85,True,241.0,197.0
+2017-196,2017,196,Lourdes,Gutierrez-Kellam,Lourdes Gutierrez-Kellam,F,49,Calgary,AB,CAN,1785.1166666666666,True,242.0,45.0
+2017-191,2017,191,Patrick,Grengs,Patrick Grengs,M,52,West Richland,WA,USA,1785.1333333333334,True,243.0,198.0
+2017-193,2017,193,Sean,Grove,Sean Grove,M,44,Novato,CA,USA,1787.6833333333334,True,244.0,199.0
+2017-296,2017,296,Hector,Reyes,Hector Reyes,M,34,ARVADA,CO,USA,1789.4666666666667,True,245.0,200.0
+2017-252,2017,252,Steven,Macdonald,Steven Macdonald,M,50,Dallas,TX,USA,1792.9166666666667,True,246.0,201.0
+2017-187,2017,187,Lance,Gilbert,Lance Gilbert,M,61,Folsom,CA,USA,1799.1166666666666,True,247.0,202.0
+2017-103,2017,103,Karen,Bonnett-Natraj,Karen Bonnett-Natraj,F,61,Auburn,CA,USA,1799.85,True,248.0,46.0
 2017-134,2017,134,Mindy,Coolman,Mindy Coolman,F,35,Fremont,NE,USA,,False,,
 2017-26,2017,26,Clare,Gallagher,Clare Gallagher,F,25,ENGLEWOOD,CO,USA,,False,,
 2017-221,2017,221,Rebekah,Isenberg,Rebekah Isenberg,F,37,Pacifica,CA,USA,,False,,

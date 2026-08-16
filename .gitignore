@@ -1,4 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
 
+# dbt
 target/
 dbt_packages/
 logs/
@@ -7,8 +13,3 @@ logs/
 # Derived database — rebuild with `python scripts/build_db.py`
 *.duckdb
 *.duckdb.wal
-venv/
-__pycache__/
-*.pyc
-.DS_Store
-.ipynb_checkpoints/

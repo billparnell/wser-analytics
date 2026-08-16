@@ -90,6 +90,39 @@ Two upstream paths feed the database:
 Only the scrape needs the network, and it only needs re-running when a new race
 year is published.
 
+### Models
+
+```bash
+dbt deps && dbt build     # builds the staging layer and runs every test
+```
+
+| Model | Grain | Coverage |
+|---|---|---|
+| `stg_wser_results` | one finisher per year | 1974–2025, 11,046 rows |
+| `stg_wser_runners` | one starter per year, DNFs included | 2017–2025, 2,928 rows |
+| `stg_wser_splits` | one runner per aid station reached | 2017–2025, 52,131 rows |
+| `stg_wser_aid_stations` | one station | 24 rows |
+
+`stg_wser_results` is the long history; `stg_wser_runners` is richer (bib,
+hometown, DNFs, seconds-precision times) but only covers the consistent
+aid-station era. They come from different sources, so two singular tests in
+`tests/` hold them to each other and to wser.org's own published counts.
+
+Quirks the staging layer handles, all of them real:
+
+- **Ties.** Runners finishing together share a place, so `(year, place)` is not
+  unique — it repeats 203 times, heavily in 1981–84. Places then skip, so the
+  last place still equals the finisher count.
+- **Two Paul Schmidts** both finished in 2000, ages 48 and 42, so `(year, name)`
+  is not unique either. The surrogate key adds finish time.
+- **Over-cutoff finishers.** A handful of runners are recorded past 30 hours
+  with no place; `is_official_finish` flags them.
+- **Gender** is reported five ways (`M`, `F`, `NB (M)`, ` NB(F)`, ` M (X)`) and
+  is normalised to M/F/NB, with the raw string kept.
+- **Name changes.** Meghan Arbogast and Meghan Canfield are one runner. Never
+  join the two sources on name.
+- **1975, 2008 and 2020 are absent** because no race was held.
+
 ### Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
 - Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers

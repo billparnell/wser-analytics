@@ -1,0 +1,95 @@
+version: 2
+
+models:
+  - name: stg_wser_results
+    description: >
+      Scraped finisher results, 1974-2025, one row per finisher per year. The
+      long-history table: use it for trends across eras. It has no splits and
+      truncates finish times to the minute.
+    columns:
+      - name: result_id
+        description: Surrogate key over (year, name, finish_minutes).
+        data_tests: [unique, not_null]
+      - name: race_year
+        data_tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "between 1974 and 2025"
+      - name: overall_place
+        description: >
+          Null for runners recorded past the 30-hour cutoff. Ties share a place,
+          so this is not unique within a year.
+      - name: gender
+        description: Normalised to M, F or NB from five reported spellings.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['M', 'F', 'NB']
+      - name: finish_seconds
+        description: Parsed from finish_time, seconds preserved.
+        data_tests: [not_null]
+      - name: is_official_finish
+        data_tests: [not_null]
+
+  - name: stg_wser_runners
+    description: >
+      One row per starter, 2017-2025, from the official splits spreadsheets.
+      Richer than stg_wser_results (bib, hometown, DNFs, seconds-precision
+      finish times) but only covers the consistent-aid-station era.
+    columns:
+      - name: runner_id
+        description: Surrogate key, "<year>-<bib>".
+        data_tests: [unique, not_null]
+      - name: race_year
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [2017, 2018, 2019, 2021, 2022, 2023, 2024, 2025]
+                quote: false
+      - name: gender
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['M', 'F', 'NB']
+      - name: is_finisher
+        data_tests: [not_null]
+
+  - name: stg_wser_splits
+    description: >
+      One row per runner per aid station reached, 2017-2025. The last station
+      present for a runner is where their race ended.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [runner_id, station_name]
+    columns:
+      - name: runner_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_wser_runners')
+                field: runner_id
+      - name: station_name
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_wser_aid_stations')
+                field: station_name
+      - name: elapsed_minutes
+        data_tests: [not_null]
+
+  - name: stg_wser_aid_stations
+    description: The 24 aid stations in course order, with official mile and elevation.
+    columns:
+      - name: station_name
+        data_tests: [unique, not_null]
+      - name: station_mile
+        data_tests: [unique, not_null]
+      - name: station_order
+        data_tests: [unique, not_null]
