@@ -61,6 +61,22 @@ Things that can trip up step 3:
 
 ---
 
+## Deploying the dashboard
+
+Railway builds the `Dockerfile`, which bakes `data/processed/*.csv` into the
+image — so **the live site serves whatever CSVs were committed at build time**.
+After changing the prep script, push and redeploy or the dashboard keeps showing
+the old numbers.
+
+A newly connected service reports **"unexposed service"** until it has a public
+domain: Settings → Networking → Generate Domain. If the dialog asks for a target
+port use `8501`, matching the Dockerfile's `EXPOSE`, and set a `PORT=8501`
+service variable so Streamlit binds the port the proxy forwards to.
+
+`railway.toml` points the health check at Streamlit's `/_stcore/health` rather
+than `/`, which on a cold start can be slow enough to fail the probe and
+restart-loop the service.
+
 ## Warehouse and dbt
 
 DuckDB, in a single file at `data/wser.duckdb`. The dataset is ~11k finisher

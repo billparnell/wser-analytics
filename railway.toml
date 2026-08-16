@@ -1,0 +1,22 @@
+# Railway deploy config for the Streamlit dashboard.
+#
+# The service needs a public domain before it is reachable -- that is a UI
+# action (Settings -> Networking -> Generate Domain), not something this file
+# can do. Until then Railway reports the service as "unexposed".
+#
+# If the domain dialog asks for a target port, use 8501 to match the
+# Dockerfile's EXPOSE, and set a PORT=8501 service variable so Streamlit binds
+# the same port the proxy forwards to.
+
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+# Streamlit's own health endpoint. Without this Railway probes "/", which the
+# app answers only once the whole Plotly page has rendered -- slow enough on a
+# cold start to fail the check and restart-loop the service.
+healthcheckPath = "/_stcore/health"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
