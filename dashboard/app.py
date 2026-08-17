@@ -2,10 +2,12 @@
 
 Run with:  streamlit run dashboard/app.py
 
-Data comes from data/processed/ (built by scripts/prep_dashboard_data.py)
-and covers 2017-2025, the era with a consistent aid-station layout.
+Data comes from the dbt staging models in data/wser.duckdb, which is built by
+scripts/build_db.py and `dbt build`. Covers 2017-2025, the era with a consistent
+aid-station layout.
 """
 
+import duckdb
 import numpy as np
 import pandas as pd
 import plotly.express as px
@@ -14,7 +16,7 @@ import streamlit as st
 
 from pathlib import Path
 
-DATA = Path(__file__).resolve().parent.parent / "data" / "processed"
+DB = Path(__file__).resolve().parent.parent / "data" / "wser.duckdb"
 
 GOLD = "#C9A227"
 DARK = "#2B2118"
@@ -35,10 +37,74 @@ st.set_page_config(page_title="WSER 100 Analytics", page_icon="🏔️", layout=
 
 @st.cache_data
 def load_data():
-    profile = pd.read_csv(DATA / "course_profile.csv")
-    stations = pd.read_csv(DATA / "aid_stations.csv")
-    runners = pd.read_csv(DATA / "runners.csv")
-    splits = pd.read_csv(DATA / "splits.csv")
+    """Read the dbt staging models out of DuckDB.
+
+    Columns are aliased back to the names the rest of this module already uses,
+    so the dbt layer is the single source of truth without the plotting code
+    needing to know about it.
+    """
+    if not DB.exists():
+        st.error(
+            f"No database at {DB}. Build it with:\n\n"
+            "    python scripts/prep_dashboard_data.py\n"
+            "    python scripts/build_db.py\n"
+            "    dbt build"
+        )
+        st.stop()
+
+    con = duckdb.connect(str(DB), read_only=True)
+    try:
+        profile = con.execute("""
+            select mile, elevation_ft, lat, lon
+            from stg_wser_course_profile
+            order by mile
+        """).df()
+
+        stations = con.execute("""
+            select
+                station_name as station,
+                station_mile as mile,
+                cutoff_hours,
+                elevation_ft
+            from stg_wser_aid_stations
+            order by station_order
+        """).df()
+
+        runners = con.execute("""
+            select
+                runner_id,
+                race_year       as year,
+                bib,
+                first_name,
+                last_name,
+                runner_name     as name,
+                gender,
+                cast(age as bigint)            as age,
+                city,
+                state,
+                country,
+                finish_minutes                 as finish_min,
+                is_finisher                    as finished,
+                -- Cast to double so missing places arrive as NaN rather than
+                -- pandas' nullable pd.NA, which does not behave the same in the
+                -- numpy comparisons downstream.
+                cast(overall_place as double)  as overall_place,
+                cast(gender_place as double)   as gender_place
+            from stg_wser_runners
+        """).df()
+
+        splits = con.execute("""
+            select
+                runner_id,
+                race_year       as year,
+                station_name    as station,
+                station_mile    as mile,
+                elapsed_minutes as elapsed_min
+            from stg_wser_splits
+        """).df()
+    finally:
+        con.close()
+
     return profile, stations, runners, splits
 
 

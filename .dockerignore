@@ -1,12 +1,15 @@
 venv/
 .git/
 .ipynb_checkpoints/
-data/raw/
-data/*.csv
-data/*.duckdb
-*.duckdb
 *.ipynb
 logs/
 target/
 dbt_packages/
 .DS_Store
+
+# The database is built inside the image, never copied from the host.
+*.duckdb
+*.duckdb.wal
+
+# data/raw/ and data/*.csv are deliberately NOT ignored: the builder stage
+# needs the spreadsheets and the scraped CSVs to rebuild the database.

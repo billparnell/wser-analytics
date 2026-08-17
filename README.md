@@ -8,9 +8,15 @@ Covers 2017-2025, the era with a consistent aid-station layout (no race in 2020)
 
 ```bash
 source venv/bin/activate
-python scripts/prep_dashboard_data.py   # rebuild data/processed/ from data/raw/
+python scripts/prep_dashboard_data.py   # data/raw/ -> data/processed/*.csv
+python scripts/build_db.py              # CSVs -> data/wser.duckdb
+dbt deps && dbt build                   # build the models the dashboard reads
 streamlit run dashboard/app.py
 ```
+
+The dashboard reads the dbt staging models out of `data/wser.duckdb`, so the
+models are the single source of truth rather than a second pipeline running
+alongside them.
 
 Views (filter by year, gender, cohort; spotlight any finisher):
 
@@ -35,10 +41,14 @@ course GPX with aid-station waypoints (`data/raw/WSER2025welev.gpx`).
    the prep script looks for.
 2. Add the year to the `YEARS` list near the top of
    `scripts/prep_dashboard_data.py`.
-3. Re-run `python scripts/prep_dashboard_data.py`. The console prints
-   starter/finisher counts per year — sanity-check them against
-   wser.org (or `data/wser_year_summary.csv`).
-4. Restart the dashboard (or let Streamlit hot-reload). The new year appears
+3. Re-run the pipeline: `python scripts/prep_dashboard_data.py && python
+   scripts/build_db.py && dbt build`. The prep script prints starter/finisher
+   counts per year — sanity-check them against wser.org. `dbt build` will fail
+   if the new year breaks a test, including the cross-source finisher-count
+   reconciliation, so a bad parse stops here rather than reaching a chart.
+4. Add the year to the `accepted_values` test for `race_year` in
+   `models/staging/_stg_wser__models.yml`, or that test will fail on it.
+5. Restart the dashboard (or let Streamlit hot-reload). The new year appears
    in the Year dropdown automatically; nothing in `dashboard/app.py` needs
    to change.
 
@@ -63,10 +73,15 @@ Things that can trip up step 3:
 
 ## Deploying the dashboard
 
-Railway builds the `Dockerfile`, which bakes `data/processed/*.csv` into the
-image — so **the live site serves whatever CSVs were committed at build time**.
-After changing the prep script, push and redeploy or the dashboard keeps showing
-the old numbers.
+Railway builds the `Dockerfile`. It is multi-stage: the builder runs the prep
+script, `build_db.py` and `dbt build` against `data/raw/`, and the runtime stage
+copies out only the finished `wser.duckdb` — so dbt never ships in the running
+image. Because `dbt build` runs the tests, **a data regression fails the image
+rather than deploying a quietly wrong dashboard**.
+
+The database is baked in at build time, so **the live site serves whatever was
+in `data/raw/` when it was built**. After adding a race year, push and redeploy
+or the dashboard keeps showing the old numbers.
 
 A newly connected service reports **"unexposed service"** until it has a public
 domain: Settings → Networking → Generate Domain. If the dialog asks for a target

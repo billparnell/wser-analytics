@@ -109,8 +109,18 @@ the CSVs rather than the dbt models, which is the remaining seam.
       out one higher here where a tie straddles the 24-hour line. Counting
       humans who broke 24 hours is the defensible reading; documented in
       `fct_sub_24_rates` rather than tuned to match.
-- [ ] Point the Streamlit dashboard at the dbt models instead of reading
-      `data/processed/*.csv` directly — closes the last bypass
+- [x] **Dashboard now reads the dbt models**, not `data/processed/*.csv`.
+      `load_data()` queries DuckDB and aliases columns back to the names the
+      plotting code already used, so ~490 lines were untouched. Verified byte
+      parity against the CSVs (same rows, columns, values) and pinned
+      `overall_place`/`gender_place` to double so missing places arrive as NaN
+      rather than pandas' nullable `pd.NA`. Exercised every view via
+      Streamlit's AppTest: 27 year x gender and 16 cohort/spotlight
+      combinations, 0 failures.
+- [x] Dockerfile is now multi-stage — builder runs prep + build_db + `dbt
+      build` (tests included, so a data regression fails the image), runtime
+      copies out just the `.duckdb`. **Not verified locally: Docker isn't
+      installed on this machine, so Railway's build is the first real test.**
 - [ ] Push Phase 1 (results explorer) to GitHub with a clean README
 - [ ] Reconcile the phase numbering — the repo section calls the results explorer
       "Phase 1" and the phase list calls the baseline curve "Phase 1." Pick one
