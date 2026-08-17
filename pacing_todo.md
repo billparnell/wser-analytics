@@ -8,6 +8,67 @@ Status key: `[ ]` not started · `[~]` partly done · `[!]` blocked / needs a de
 
 ---
 
+## Start here (paused 2026-08-17)
+
+**Phase 0 is complete. Phase 1 is most of the way there.** The narrative of what
+was found and why lives in the `## Log` at the bottom of `pacing_project.md` —
+read the 2026-08-16 and 2026-08-17 entries first; this file is only the checklist.
+
+### Rebuild everything from a clean clone
+
+```bash
+source venv/bin/activate
+python scripts/prep_dashboard_data.py   # data/raw/*.xlsx -> data/processed/*.csv
+python scripts/build_db.py              # CSVs -> data/wser.duckdb
+dbt deps && dbt build                   # staging + marts, 55 checks
+python scripts/clean_activities.py      # GPS parquet -> distance-indexed profile
+python scripts/plot_speed_vs_grade.py   # figures/speed_vs_grade_2025.png
+streamlit run dashboard/app.py
+```
+
+Verified end to end on 2026-08-17: all five steps green from a deleted database.
+`scripts/parse_activities.py` only needs re-running if a new GPX is dropped into
+`data/activities/raw/` (gitignored — the parsed Parquet is what's committed).
+
+### The one result so far
+
+Anchored at flat, Minetti over-predicts downhill speed by more than 2x: at −20%
+it says 4.42 m/s, the file says 1.97. Uphill runs the other way, 1.23x at +20%.
+Heart rate is near-flat at 127–136 across the whole grade range. Verified this
+does not depend on the polynomial — using the paper's raw measured values gives
+the same 0.45 ratio.
+
+### Pick up with these, in order
+
+1. **Strava GAP as a second reference curve** (§1.2). Minetti is in and
+   verified; Strava's is the other curve the writeup needs to compare against.
+2. **Early-race vs late-race split** (§2). The interesting question: how much of
+   that 0.45 downhill ratio is terrain and how much is 78 miles of accumulated
+   quad damage? `moving_s` and `mile` are already on every row of the profile,
+   so the split is a filter, not new plumbing.
+3. **Then** the personal fit (§2). Not before — the plan doc is right that
+   fitting one curve to all 100 miles and calling it personal would be wrong.
+
+### Needs Bill, not Claude
+
+- Export Black Canyon 100k and Big Alta 100k, plus 3–5 fresh-legs training runs.
+  The training files matter most: they isolate grade before fatigue confounds it.
+- Delete the old Snowflake trial account (`hkbevzo-sub68389`) — its password sat
+  in plaintext on disk and it's now unused.
+- A PDF of Minetti 2002 if a library login can reach it, to confirm the printed
+  coefficients firsthand.
+- Sanity-check Bill Finkbeiner's 17 finishes in `dim_runner_careers`.
+
+### Open decisions parked
+
+- Polynomial or spline for the personal fit
+- One model with a run/hike breakpoint, or two separate fits above/below ~15%
+- Whether three race files are enough signal, or this needs a training season
+- dbt stays, but doesn't get extended (decided 2026-08-17) — the pacing work is
+  Python; dbt earns its keep at Phase 5, joining predictions to 52k splits
+
+---
+
 ## Phase 0 — finish the dbt work that's already started
 
 Reality check as of 2026-08-15: `models/` contained only dbt's scaffold

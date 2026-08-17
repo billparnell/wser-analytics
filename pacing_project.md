@@ -104,12 +104,12 @@ technical question. Worst case is silence.
 
 | Source | Status | Notes |
 |---|---|---|
-| WS100 2025 GPS (mine) | ⬜ export | ~26h at 1s ≈ 90k points |
+| WS100 2025 GPS (mine) | ✅ done | COROS, 86,570 pts at 1 Hz, 100.1 mi, 25:24:21. Elevation quantised to whole metres — see log |
 | Black Canyon 100k 2026 | ⬜ export | 13:45, course PR — good second fit point |
 | Big Alta 100k 2026 | ⬜ export | Different terrain profile |
 | Training runs, Upper Park / Legacy Trail | ⬜ export | Fresh-legs baseline, no fatigue confound |
 | Historical weather, WS course 6/28/2025 | ⬜ | Open-Meteo has a free historical API |
-| WSER aid station splits | ⬜ | Phase 3 validation set |
+| WSER aid station splits | ✅ done | `stg_wser_splits`, 52,131 rows. Already used to validate GPS stop detection |
 
 Convert FIT/GPX → Parquet in Python early. Don't make Power Query parse XML.
 
@@ -120,6 +120,10 @@ it breaks at mile 80.
 ---
 
 ## Phases
+
+> **The checkboxes below are the original plan, left as written.** For current
+> status use `pacing_todo.md` — it has a "Start here" block at the top. As of
+> 2026-08-17: Phase 0 done, Phase 1 done except Strava GAP, Phase 2 not started.
 
 ### Phase 0 — finish what's already started
 - [ ] Build `stg_wser_results.sql`
@@ -167,7 +171,9 @@ it breaks at mile 80.
 
 ## Modeling notes
 
-**Minetti polynomial (verify coefficients against the paper before trusting):**
+**Minetti polynomial** — verified 2026-08-17 against the four running-cost
+values in the paper's abstract, all within 1 SD. See the log entry; the printed
+equation itself is still unread (paper paywalled).
 
 ```
 C(i) = 155.4i⁵ − 30.4i⁴ − 43.3i³ + 46.3i² + 19.5i + 3.6
