@@ -272,3 +272,91 @@ the trial account still needs deleting from the console.
 and empty. Next: pick the source for `stg_wser_results` — raw Excel, the prep
 script's CSVs, or the 11,046-row `main.wser_results` table already in
 `data/wser.duckdb`.
+
+### 2026-08-17 — Phase 1: the file, and the first look
+
+Got the WS100 2025 file off the COROS. 86,570 points, 1 Hz, 100.1 mi,
+25:24:21 on the watch against 25:21:50 official. Distance, elevation, heart
+rate and cadence all present.
+
+**The elevation is quantised to whole metres.** That's the finding that shaped
+everything else. At ~2 m of travel per sample, one 1 m step reads as a 50%
+grade: 86% of samples show *zero* elevation change and then it jumps a full
+metre. Point-to-point grade off this file puts **8.9% of points outside
+Minetti's entire valid range**, with a maximum of 1050% and a standard
+deviation of 28.6% on a course whose real grades sit inside ±25%. The plan doc
+said grade computed point-to-point would be garbage. It's worse than that, and
+for a reason the doc didn't anticipate — not GPS noise, watch quantisation.
+
+Curiously, the *aggregate* is fine: raw total gain 18,209 ft against the
+course's published ~18,000. The error is entirely local.
+
+**Smoothing window: 75 m, not the 10–20 m I'd guessed.** Swept a
+Savitzky-Golay window on a 1 m distance grid and used total climb as the
+criterion. 20 m leaves 1,265 ft of phantom gain; 200 m erases 840 ft of real
+terrain; 75 m lands within 30 ft of published. Worth being honest that the
+published figure is itself a smoothed survey number, so this calibrates the
+window rather than validating it. Kept a 20 m grade column alongside so Phase 2
+can test how much the choice matters.
+
+Grade must be measured per metre travelled, not per second — speed swings
+tenfold between running the flats and hiking a canyon, so a time-indexed series
+would weight the slow parts of the course far more heavily.
+
+**Aid-station stops fall out of the GPS on their own.** Sustained sub-0.5 m/s
+over 60 s finds 9 stops, and **8 land within half a mile of a real aid
+station** — Robinson Flat 11.7 min, Michigan Bluff 10.4, Rucky Chucky 6.5 + 2.3
+(the river), Devil's Thumb 3.8. The ninth, 4.9 min at mile 22.1, is nowhere
+near a station and must have been mine. Validating this against
+`stg_wser_aid_stations` is the first time the two halves of the project have
+touched. Total 50 min stopped, 24.56 h moving against 25.41 h elapsed.
+
+Two GPS dropouts, at mile 3.3 and mile 52.9 (El Dorado Creek, the 552 s gap).
+Both understate horizontal distance while the real descent continues, which
+manufactured grades of +179%. Masked a smoothing window either side rather than
+trusting the interpolation. After that, grade runs −43% to +49%, which is
+believable for this course, and 98.9% of cells survive for fitting.
+
+#### The first look
+
+| grade | measured | Minetti (constant power) | ratio |
+|---|---|---|---|
+| −20% | 1.98 m/s | 4.42 | **0.45** |
+| −10% | 2.43 | 3.70 | 0.66 |
+| −5% | 2.43 | 2.90 | 0.84 |
+| 0% | 2.22 | 2.21 | 1.01 |
+| +5% | 1.79 | 1.70 | 1.06 |
+| +10% | 1.43 | 1.33 | 1.07 |
+| +20% | 1.08 | 0.88 | **1.23** |
+
+Anchored at flat, so the divergence away from flat is the whole content.
+
+**Downhill, the textbook curve is wrong by more than a factor of two.** Minetti
+predicts peak speed of 4.46 m/s at −18%; I peaked at 2.48 m/s at −8%. The
+metabolic curve says descending is cheap, so go fast. Real trail says braking
+forces, technical footing and quadriceps that have to survive another 40 miles.
+None of that is in a treadmill metabolic cost.
+
+This is the Enduraw Transvulcania finding — Strava overestimating downhill
+speed — arrived at independently on my own file. Encouraging, and also a
+reminder that I haven't done anything novel yet: I've reproduced the known
+result that makes personal curves worth fitting.
+
+**Uphill I'm *faster* than the model**, and increasingly so with steepness
+(1.23× at +20%). Suspect that's the run/hike regime change — above ~15% I'm
+power-hiking, and hiking is cheaper than the running curve extrapolates. Which
+is exactly why Minetti measured walking separately, and an argument for the
+breakpoint model over one continuous curve.
+
+**Heart rate is nearly flat across the whole range** — 127–136 bpm whether
+descending at 11:26/mi or climbing at 19:49/mi, rising only to 145 on the
+steepest pitches. I paced by effort, not by speed. That's worth returning to:
+if effort really was near-constant, then a cost curve fitted to this file is
+close to an iso-effort curve, which is the assumption the whole constant-power
+comparison rests on.
+
+Not fitted anything yet. That was the point of today.
+
+Next: verify the Minetti coefficients against the actual paper before they get
+load-bearing, add Strava GAP as a second reference, then split early-race from
+late-race and see how much of the downhill gap is fatigue rather than terrain.

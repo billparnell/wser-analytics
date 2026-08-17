@@ -131,40 +131,55 @@ the CSVs rather than the dbt models, which is the remaining seam.
 ## Phase 1 — the baseline curve
 
 ### 1.0 Get the data
-- [!] **Export WS100 2025 GPS (mine).** The GPX already in `data/raw/` is the
-      *course* file (Torsten Heycke, 8,118 points, aid-station waypoints) — not
-      the 26-hour activity file. Still need the personal one from Garmin/Strava.
+- [x] **WS100 2025 GPS exported** — COROS, 86,570 points at 1 Hz, 100.1 mi,
+      25:24:21 on the watch vs 25:21:50 official. Has distance, elevation,
+      heart rate, cadence. Lives in `data/activities/raw/` (gitignored, 28 MB);
+      the parsed Parquet is committed instead.
 - [ ] Export Black Canyon 100k 2026 (13:45)
 - [ ] Export Big Alta 100k 2026
 - [ ] Export 3–5 fresh-legs training runs (Upper Park, Legacy Trail)
-- [ ] Decide FIT vs GPX at the source. FIT keeps per-second cadence/HR and the
-      barometric altimeter field; Strava's GPX export drops some of it.
+- [x] GPX turned out to be enough for the COROS export — cadence and HR both
+      present. **But elevation is quantised to whole metres**, which is the
+      dominant data-quality problem (see log). If a FIT export carries finer
+      barometric altitude, it would be strictly better — worth checking for the
+      next file.
 
 ### 1.1 Parse and clean
-- [ ] `scripts/parse_activities.py` — FIT/GPX → Parquet in `data/activities/`,
-      one file per activity, columns: timestamp, lat, lon, ele, dist, hr, cadence
-- [ ] Add `fitparse` (or `fitdecode`) to `requirements.txt`
-- [ ] Drop GPS dropouts — flag gaps > N seconds and implausible speeds rather
-      than silently interpolating over them
-- [ ] Smooth elevation before touching grade (Savitzky-Golay or a rolling
-      median; compare against the course GPX profile as a sanity check)
-- [ ] Compute grade over a 10 m and a 20 m window; keep both and compare
-- [ ] Detect and strip aid-station stops — otherwise they read as 0 mph at
-      whatever grade the aid station sits on
-- [ ] Tag each point with elapsed race time and cumulative distance (needed for
-      the early/late fatigue split later)
+- [x] `scripts/parse_activities.py` — GPX → Parquet, matches extension fields on
+      local tag name so COROS `gpxdata:` and Garmin `gpxtpx:` both parse
+- [ ] Add `fitparse`/`fitdecode` if a future file is FIT rather than GPX
+- [x] GPS dropouts flagged, not interpolated over — two in this file (mile 3.3
+      and mile 52.9, the El Dorado Creek canyon). Both understate horizontal
+      distance while the descent continues, manufacturing +179% grades; a
+      smoothing window either side is masked out.
+- [x] Elevation smoothed — Savitzky-Golay on a 1 m distance grid. **Window is
+      75 m, not the 10–20 m guessed here**, calibrated by sweeping against the
+      course's published ~18,000 ft of climb (20 m leaves 1,265 ft of phantom
+      gain, 200 m erases 840 ft of real terrain, 75 m lands within 30 ft).
+- [x] Grade kept at both 75 m (primary) and 20 m so Phase 2 can test sensitivity
+- [x] Aid-station stops detected from GPS alone — 9 stops, 8 within half a mile
+      of a real aid station, validated against `stg_wser_aid_stations`. 50 min
+      stopped; 24.56 h moving vs 25.41 h elapsed.
+- [x] Output is indexed by distance, not time, and carries elapsed_s, moving_s,
+      mile and lat/lon — the early/late fatigue split has what it needs
 
 ### 1.2 Reference curves
-- [ ] Implement the Minetti polynomial, coefficients verified against the 2002
-      paper — the version in `pacing_project.md` is transcribed from memory
+- [~] Minetti polynomial implemented in `scripts/plot_speed_vs_grade.py`.
+      **Coefficients still NOT verified against the paper** — currently
+      transcribed from the project notes, and now load-bearing for the headline
+      result. Verify before Phase 2 fits anything.
 - [ ] Implement Strava GAP as a second reference
 - [ ] Unit-test both against known points (flat cost ≈ 3.6 J·kg⁻¹·m⁻¹)
 
 ### 1.3 Look before fitting
-- [ ] Scatter actual speed vs. grade, all files, hex-binned
-- [ ] Overlay Minetti and Strava GAP on the same axes
-- [ ] Write down what you see *before* fitting anything — that observation is
-      the first log entry with real content in it
+- [x] Hex-binned speed vs grade, `figures/speed_vs_grade_2025.png`
+- [~] Minetti overlaid; Strava GAP still to add
+- [x] Written up in the 2026-08-17 log entry. Headline: **downhill, Minetti
+      over-predicts by more than 2x** (0.45x at −20%); measured peak is 2.48 m/s
+      at −8% against a predicted 4.46 m/s at −18%. Uphill I'm *faster* than the
+      model and increasingly so with steepness (1.23x at +20%), consistent with
+      a run/hike regime change. Heart rate is near-flat at 127–136 across the
+      whole grade range — paced by effort, not speed.
 
 ---
 
