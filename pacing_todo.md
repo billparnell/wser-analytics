@@ -164,10 +164,15 @@ the CSVs rather than the dbt models, which is the remaining seam.
       mile and lat/lon — the early/late fatigue split has what it needs
 
 ### 1.2 Reference curves
-- [~] Minetti polynomial implemented in `scripts/plot_speed_vs_grade.py`.
-      **Coefficients still NOT verified against the paper** — currently
-      transcribed from the project notes, and now load-bearing for the headline
-      result. Verify before Phase 2 fits anything.
+- [x] **Minetti polynomial verified** (2026-08-17), though indirectly. The
+      paper is paywalled — japplphysiol, the softrun mirror and PubMed all
+      403 — so the printed equation hasn't been read. Instead checked against
+      the four running-cost values the abstract reports, and the polynomial
+      reproduces every one within 1 SD (+0.45: 19.43 vs 18.93±1.74; level:
+      3.60 vs 3.40±0.24; −0.20: 1.80 vs 1.73±0.36; −0.45: 4.03 vs 3.92±0.81).
+      Minimum lands at −18.1% against the paper's reported −20%.
+- [ ] Still worth reading the actual PDF if a copy turns up, to confirm the
+      printed coefficients and the stated valid range firsthand.
 - [ ] Implement Strava GAP as a second reference
 - [ ] Unit-test both against known points (flat cost ≈ 3.6 J·kg⁻¹·m⁻¹)
 

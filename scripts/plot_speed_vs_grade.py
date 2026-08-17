@@ -10,8 +10,23 @@ holds constant metabolic power, so speed goes as 1/cost -- the same assumption
 underneath Strava's GAP. The curve is anchored to measured flat speed rather
 than fitted, so any divergence away from flat is the interesting part.
 
-CAVEAT: the polynomial coefficients are transcribed from the project notes and
-have NOT yet been checked against the paper. See pacing_todo.md.
+VERIFICATION (2026-08-17): the paper itself is paywalled -- japplphysiol,
+softrun's mirror and PubMed all return 403 -- so the printed equation has not
+been read directly. The coefficients below are instead checked against the four
+running-cost values the abstract reports, and reproduce every one within 1 SD:
+
+    i       paper (measured)   this polynomial
+    +0.45   18.93 +/- 1.74     19.43
+     0.00    3.40 +/- 0.24      3.60
+    -0.20    1.73 +/- 0.36      1.80
+    -0.45    3.92 +/- 0.81      4.03
+
+The paper puts the minimum cost of running at i = -0.20; this polynomial
+minimises at -0.181. Good agreement on both value and location.
+
+Beware second-hand tables of "worked Minetti predictions" -- one consulted
+during this project put the minimum at -10% with a cost of 2.16, which
+contradicts both the paper and the polynomial it claimed to be evaluating.
 
 Usage: python scripts/plot_speed_vs_grade.py
 """

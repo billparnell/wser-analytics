@@ -360,3 +360,34 @@ Not fitted anything yet. That was the point of today.
 Next: verify the Minetti coefficients against the actual paper before they get
 load-bearing, add Strava GAP as a second reference, then split early-race from
 late-race and see how much of the downhill gap is fatigue rather than terrain.
+
+### 2026-08-17 (later) — Minetti verified, and a lesson about second-hand tables
+
+Went to check the coefficients and was handed a worked table of Minetti
+predictions. It disagreed with itself: the polynomial it printed is the one I'd
+implemented, but its tabulated values didn't match that polynomial (+20%: 12.74
+tabulated vs 9.01 computed; −20%: 2.93 vs 1.80), and its prose put the
+braking-cost upturn below −20% while its table put it below −10%. Three
+versions in one page.
+
+The paper is paywalled — journals.physiology.org, the softrun mirror and
+PubMed all 403 — so I still haven't read the printed equation. But the abstract
+reports four measured running costs, and the polynomial reproduces all four
+within 1 SD: +0.45 → 19.43 vs 18.93±1.74; level → 3.60 vs 3.40±0.24; −0.20 →
+1.80 vs 1.73±0.36; −0.45 → 4.03 vs 3.92±0.81. The paper puts the cheapest
+running gradient at −0.20; the polynomial minimises at −0.181.
+
+So the implementation is sound and the second-hand table was wrong. Worth
+recording *why* it mattered: at −20% the polynomial predicts I should have been
+running 4.42 m/s and I ran 1.97, a ratio of 0.45. The bad table would have
+predicted 2.73 and put the ratio at 0.72 — same direction, but a completely
+different claim about how badly the textbook curve fails on descents.
+
+The check that actually settles it bypasses the polynomial altogether: using
+the paper's own measured numbers, 1.73/3.40 at −0.20, predicted speed is 4.34
+m/s and the ratio is **0.45**. Identical to the polynomial. The headline does
+not depend on the fit at all.
+
+Lesson for the writeup: derived tables are not sources. Reproduce them from the
+equation, and where possible check the equation against the raw measurements
+rather than against someone else's arithmetic.
